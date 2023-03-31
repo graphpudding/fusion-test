@@ -241,6 +241,10 @@ namespace Projectiles
         gameObject.AddComponent<CustomNetworkDebugStartGUI>();
       }
     }
+    if(Application.isBatchMode){
+      StartServer();
+      Debug.Log("StartServer");
+    }
   }
 
   protected bool TryGetSceneRef(out SceneRef sceneRef) {

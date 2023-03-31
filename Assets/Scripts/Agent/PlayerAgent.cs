@@ -43,7 +43,7 @@ namespace Projectiles
 			name = Object.InputAuthority.ToString();
 
 			// Disable visual for local player
-			_visual.SetActive(HasInputAuthority == false);
+			//_visual.SetActive(HasInputAuthority == false);
 
 			Weapons.OnSpawned();
 		}

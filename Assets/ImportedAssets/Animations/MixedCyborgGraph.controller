@@ -65,8 +65,8 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.09764749
-  m_TransitionOffset: 0.08027425
-  m_ExitTime: 0.30146867
+  m_TransitionOffset: 0.079878286
+  m_ExitTime: 2.0279968
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -198,7 +198,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 1827226128182048838, guid: cc8a2c5ce2ed9494ebbd423713187612, type: 3}
     m_Threshold: 0.06313131
-    m_Position: {x: 0, y: -1}
+    m_Position: {x: 2, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Velocity X
@@ -206,7 +206,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 1827226128182048838, guid: 4079db39a6b11ac40bb9adcc08ea1975, type: 3}
     m_Threshold: 0.09469697
-    m_Position: {x: 0, y: 1}
+    m_Position: {x: 0, y: -1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Velocity X
@@ -214,7 +214,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 1827226128182048838, guid: 7a9d19448caad5d40bb151ba94a5b8cd, type: 3}
     m_Threshold: 0.12626262
-    m_Position: {x: -1, y: 0}
+    m_Position: {x: 0, y: 1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Velocity X
@@ -222,7 +222,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 1827226128182048838, guid: d486d2b8a4d31024c8242df4ca742453, type: 3}
     m_Threshold: 0.15782829
-    m_Position: {x: 2, y: 0}
+    m_Position: {x: -1, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Velocity X
@@ -238,7 +238,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 1827226128182048838, guid: c3f38995530c0a24b894975e6dd06e34, type: 3}
     m_Threshold: 0.22095959
-    m_Position: {x: 1, y: 1}
+    m_Position: {x: -1, y: -1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Velocity X
@@ -246,7 +246,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 1827226128182048838, guid: 566da365ff3e54f4a9f61decb73e3764, type: 3}
     m_Threshold: 0.25252524
-    m_Position: {x: -1, y: -1}
+    m_Position: {x: 1, y: 1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Velocity X
@@ -449,9 +449,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.47048202
-  m_TransitionOffset: 0.60876185
-  m_ExitTime: 0.66366935
+  m_TransitionDuration: 1.0092453
+  m_TransitionOffset: 0.6105405
+  m_ExitTime: 0.1797277
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0

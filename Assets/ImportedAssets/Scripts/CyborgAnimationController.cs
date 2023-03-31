@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion.KCC;
+using Projectiles;
 
 
 public class CyborgAnimationController : MonoBehaviour
@@ -15,7 +16,11 @@ public class CyborgAnimationController : MonoBehaviour
     [SerializeField]
     private KCC _kcc;
 
+    [SerializeField]
+    private PlayerAgent _agent;
+
     private KCCData _kccData;
+    private PlayerInput _input;
 
     private bool _hasAnimator;
 
@@ -46,7 +51,12 @@ public class CyborgAnimationController : MonoBehaviour
 
         if (_kcc != null)
         {
-            _kccData = _kcc.RenderData;
+            _kccData = _kcc.FixedData;
+        }
+
+        if (_agent != null)
+        {
+            _input = _agent.Owner.Input;
         }
     }
 
@@ -65,135 +75,84 @@ public class CyborgAnimationController : MonoBehaviour
         if (_hasAnimator)
         {
             SetAnimations();
-        }
-
-        Debug.Log(_kccData.JumpImpulse);
+            //Debug.Log(_kccData.InputDirection.ToString() + " " + _kcc.transform.forward);
+            //Vector3 res = new Vector3(_kccData.InputDirection.x, _kccData.InputDirection.y, _kccData.InputDirection.z) / _kccData.TransformRotation;
+            //Debug.Log(_kccData.RealVelocity.normalized.ToString() + (_kccData.TransformRotation * Vector3.forward).ToString());
+            //Debug.Log(Vector3.Dot(_kccData.RealVelocity.normalized, (_kccData.TransformRotation * Vector3.forward)));
+            //Debug.Log(Vector3.Angle(_kcc.transform.forward, _kccData.RealVelocity));
+            //Debug.Log(Quaternion.FromToRotation(Vector3.up, _kccData.RealVelocity - _kcc.transform.forward).eulerAngles.z);
+        }        
     }
 
     private void SetAnimations()
     {
-        ////first variant - we dont jump and fall, just running
-        //if (!_mover.Jump && !_mover.Fall)
-        //{
-        //    //velocity of falling to 0
-        //    //_velocityYX = 0;
-        //    //_velocityYZ = 0;
-        //    _velocityYZ = ChangeVelocitySmoothly(_velocityZ, 0.0f, ref _changingAnimZTimer);
-        //    _velocityYX = ChangeVelocitySmoothly(_velocityX, 0.0f, ref _changingAnimXTimer);
+        //first variant - we dont jump and fall, just running
+        if (!_kccData.HasJumped && _kccData.IsGrounded)
+        {
+            //velocity of falling to 0
+            //_velocityYX = 0;
+            //_velocityYZ = 0;
+            _velocityYZ = ChangeVelocitySmoothly(_velocityZ, 0.0f, ref _changingAnimZTimer);
+            _velocityYX = ChangeVelocitySmoothly(_velocityX, 0.0f, ref _changingAnimXTimer);
 
-        //    //we move on Z axis
-        //    if (_mover.InputSystem.move.y != 0)
-        //    {
-        //        _velocityZ += _mover.InputSystem.move.y * Time.deltaTime * _changingAnimationCoef;
-        //        //clamp between lowest animation velocity and current maximum speed
-        //        _velocityZ = Mathf.Clamp(_velocityZ, -1, Mathf.Lerp(1, 2, (_mover.CurrentSpeed - _mover.MoveSpeed) / (_mover.SprintSpeed - _mover.MoveSpeed)));
-        //    }
-        //    else // we dont move on Z axis, so slowly decrease Z velocity while its not near 0
-        //    {
-        //        if (Mathf.Abs(_velocityZ) > 0.05f)
-        //        {
-        //            _velocityZ -= Time.deltaTime * _changingAnimationCoef * _velocityZ;
-        //        }
-        //        else
-        //        {
-        //            _velocityZ = 0;
-        //        }
-        //    }
+            //we move on Z axis
+            if (_input.RenderInput.MoveDirection.y != 0)
+            {
+                _velocityZ += (_input.RenderInput.MoveDirection.y / Mathf.Abs(_input.RenderInput.MoveDirection.y)) * Time.deltaTime * _changingAnimationCoef;
+                //clamp between lowest animation velocity and current maximum speed
+                //_velocityZ = Mathf.Clamp(_velocityZ, -1, Mathf.Lerp(1, 2, (_mover.CurrentSpeed - _mover.MoveSpeed) / (_mover.SprintSpeed - _mover.MoveSpeed)));
+                _velocityZ = Mathf.Clamp(_velocityZ, -1, 1);
+            }
+            else // we dont move on Z axis, so slowly decrease Z velocity while its not near 0
+            {
+                if (Mathf.Abs(_velocityZ) > 0.05f)
+                {
+                    _velocityZ -= Time.deltaTime * _changingAnimationCoef * _velocityZ;
+                }
+                else
+                {
+                    _velocityZ = 0;
+                }
+            }
 
-        //    //we move on X axis
-        //    if (_mover.InputSystem.move.x != 0)
-        //    {
-        //        _velocityX += _mover.InputSystem.move.x * Time.deltaTime * _changingAnimationCoef;
-        //        //clamp between lowest and hightest animation velocity 
-        //        _velocityX = Mathf.Clamp(_velocityX, -1, 1);
-        //    }
-        //    else // we dont move on X axis, so slowly decrease X velocity while its not near 0
-        //    {
-        //        if (Mathf.Abs(_velocityX) > 0.05f)
-        //        {
-        //            _velocityX -= Time.deltaTime * _changingAnimationCoef * _velocityX;
-        //        }
-        //        else
-        //        {
-        //            _velocityX = 0;
-        //        }
-        //    }
-        //}
+            //we move on X axis
+            if (_input.RenderInput.MoveDirection.x != 0)
+            {
+                _velocityX += (_input.RenderInput.MoveDirection.x / Mathf.Abs(_input.RenderInput.MoveDirection.x)) * Time.deltaTime * _changingAnimationCoef;
+                //clamp between lowest and hightest animation velocity 
+                _velocityX = Mathf.Clamp(_velocityX, -1, 1);
+            }
+            else // we dont move on X axis, so slowly decrease X velocity while its not near 0
+            {
+                if (Mathf.Abs(_velocityX) > 0.05f)
+                {
+                    _velocityX -= Time.deltaTime * _changingAnimationCoef * _velocityX;
+                }
+                else
+                {
+                    _velocityX = 0;
+                }
+            }
+        }
 
+        _animator.SetBool(_animIDGrounded, _kccData.IsGrounded);
 
-        //_animator.SetBool(_animIDGrounded, _mover.Grounded);
-        //if (_mover.Grounded)
-        //{
-        //    _animator.SetBool(_animIDJump, false);
-        //    _animator.SetBool(_animIDFreeFall, false);
-        //}
+        if (_kccData.IsGrounded)
+        {
+            _animator.SetBool(_animIDJump, false);
+            _animator.SetBool(_animIDFreeFall, false);
+        }
 
-        //if (_mover.Jump)
-        //{
-        //    _animator.SetBool(_animIDJump, true);
-        //}
+        if (_kccData.HasJumped)
+        {
+            Debug.Log("’‡È");
+            _animator.SetBool(_animIDJump, true);
+        }
 
-        //if (_mover.Fall)
-        //{
-        //    _animator.SetBool(_animIDFreeFall, true);
-        //}
-
-
-        //if (_mover.Jump)
-        //{
-        //    //only start jump
-        //    if (_velocityYX < 1)
-        //    {
-        //        _velocityYX += Time.deltaTime;
-        //        _velocityYX = Mathf.Clamp(_velocityYX, 0, 1);
-        //    }
-        //    else
-        //    {
-        //        _velocityYX -= Time.deltaTime;
-        //        _velocityYX = Mathf.Clamp(_velocityYX, 0, 1);
-
-        //        _velocityYZ += Time.deltaTime;
-        //        _velocityYZ = Mathf.Clamp(_velocityYZ, 0, 1);
-        //    }
-
-        //    _velocityZ = ChangeVelocitySmoothly(_velocityZ, 0.2f, ref _changingAnimZTimer);
-        //    _velocityX = ChangeVelocitySmoothly(_velocityX, 0.0f, ref _changingAnimXTimer);
-
-        //}
-        //if (_mover.Fall)
-        //{
-        //    if (_velocityYX > 0)
-        //    {
-        //        _velocityYX -= Time.deltaTime;
-        //        _velocityYX = Mathf.Clamp(_velocityYX, 0, 1);
-        //    }
-
-        //    _velocityYZ -= Time.deltaTime;
-
-        //    Vector3 legsPos = new Vector3(transform.position.x, transform.position.y - _mover.GroundedOffset - _mover.GroundedRadius,
-        //        transform.position.z);
-        //    RaycastHit hit;
-        //    if (Physics.Raycast(legsPos, Vector3.down, out hit))
-        //    {
-        //        if (Vector3.Distance(legsPos, hit.point) < 2.0f)
-        //        {
-        //            _velocityYZ = Mathf.Clamp(_velocityYZ, 0, 1);
-        //        }
-        //        else
-        //        {
-        //            _velocityYZ = Mathf.Clamp(_velocityYZ, 0.75f, 1);
-        //        }
-        //    }
-        //    //else
-        //    //{
-        //    //    _velocityYZ = Mathf.Clamp(_velocityYZ, 0.5f, 1);
-        //    //}
-
-
-        //    _velocityZ = ChangeVelocitySmoothly(_velocityZ, 0.2f, ref _changingAnimZTimer);
-        //    _velocityX = ChangeVelocitySmoothly(_velocityX, 0.0f, ref _changingAnimXTimer);
-
-        //}
+        if (!_kccData.IsGrounded && !_kccData.HasJumped)
+        {
+            _animator.SetBool(_animIDFreeFall, true);
+        }                      
 
         _animator.SetFloat(_animIDVelocityZ, _velocityZ);
         _animator.SetFloat(_animIDVelocityX, _velocityX);

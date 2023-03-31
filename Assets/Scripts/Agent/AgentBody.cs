@@ -23,7 +23,7 @@ namespace Projectiles
 
 		public override void Render()
 		{
-			_immortalityEffect.SetActive(_health.IsImmortal);
+			//_immortalityEffect.SetActive(_health.IsImmortal);
 		}
 
 		// MONOBEHAVIOUR

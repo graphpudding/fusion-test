@@ -57,7 +57,7 @@ namespace Projectiles.UI
 				var buttonAnimator = animator;
 				if (buttonAnimator != null)
 				{
-					buttonAnimator.keepAnimatorControllerStateOnDisable = true;
+					buttonAnimator.keepAnimatorStateOnDisable = true;
 				}
 			}
 		}

@@ -74,13 +74,7 @@ public class CyborgAnimationController : MonoBehaviour
     {
         if (_hasAnimator)
         {
-            SetAnimations();
-            //Debug.Log(_kccData.InputDirection.ToString() + " " + _kcc.transform.forward);
-            //Vector3 res = new Vector3(_kccData.InputDirection.x, _kccData.InputDirection.y, _kccData.InputDirection.z) / _kccData.TransformRotation;
-            //Debug.Log(_kccData.RealVelocity.normalized.ToString() + (_kccData.TransformRotation * Vector3.forward).ToString());
-            //Debug.Log(Vector3.Dot(_kccData.RealVelocity.normalized, (_kccData.TransformRotation * Vector3.forward)));
-            //Debug.Log(Vector3.Angle(_kcc.transform.forward, _kccData.RealVelocity));
-            //Debug.Log(Quaternion.FromToRotation(Vector3.up, _kccData.RealVelocity - _kcc.transform.forward).eulerAngles.z);
+            SetAnimations();           
         }        
     }
 
@@ -89,18 +83,48 @@ public class CyborgAnimationController : MonoBehaviour
         //first variant - we dont jump and fall, just running
         if (!_kccData.HasJumped && _kccData.IsGrounded)
         {
-            //velocity of falling to 0
-            //_velocityYX = 0;
-            //_velocityYZ = 0;
+            float angle = Vector3.Angle(_kcc.transform.forward, _kccData.RealVelocity);
+            float resultAngle = Vector3.Angle(_kcc.transform.right, _kccData.RealVelocity) > 90f ? 360f - angle - 0.1f : angle + 0.1f;
+
+            if (_kccData.RealSpeed == 0)
+            {
+                resultAngle = -1;
+            }
+            Vector2 inputVector = new Vector2();
+            
+            if (resultAngle >= 314 || (resultAngle <= 46 && resultAngle >= 0f))
+            {
+                inputVector.y = 1;
+            }
+            else if (resultAngle <= 226 && resultAngle >= 134)
+            {
+                inputVector.y = -1;
+            }
+            else
+            {
+                inputVector.y = 0;
+            }
+
+            if (resultAngle <= 316 && resultAngle >= 224)
+            {
+                inputVector.x = -1;
+            }
+            else if (resultAngle >= 44 && resultAngle <= 136)
+            {
+                inputVector.x = 1;
+            }
+            else
+            {
+                inputVector.x = 0;
+            }           
+
             _velocityYZ = ChangeVelocitySmoothly(_velocityZ, 0.0f, ref _changingAnimZTimer);
             _velocityYX = ChangeVelocitySmoothly(_velocityX, 0.0f, ref _changingAnimXTimer);
 
             //we move on Z axis
-            if (_input.RenderInput.MoveDirection.y != 0)
+            if (inputVector.y != 0)
             {
-                _velocityZ += (_input.RenderInput.MoveDirection.y / Mathf.Abs(_input.RenderInput.MoveDirection.y)) * Time.deltaTime * _changingAnimationCoef;
-                //clamp between lowest animation velocity and current maximum speed
-                //_velocityZ = Mathf.Clamp(_velocityZ, -1, Mathf.Lerp(1, 2, (_mover.CurrentSpeed - _mover.MoveSpeed) / (_mover.SprintSpeed - _mover.MoveSpeed)));
+                _velocityZ += (inputVector.y / Mathf.Abs(inputVector.y)) * Time.deltaTime * _changingAnimationCoef;               
                 _velocityZ = Mathf.Clamp(_velocityZ, -1, 1);
             }
             else // we dont move on Z axis, so slowly decrease Z velocity while its not near 0
@@ -116,9 +140,9 @@ public class CyborgAnimationController : MonoBehaviour
             }
 
             //we move on X axis
-            if (_input.RenderInput.MoveDirection.x != 0)
+            if (inputVector.x != 0)
             {
-                _velocityX += (_input.RenderInput.MoveDirection.x / Mathf.Abs(_input.RenderInput.MoveDirection.x)) * Time.deltaTime * _changingAnimationCoef;
+                _velocityX += (inputVector.x / Mathf.Abs(inputVector.x)) * Time.deltaTime * _changingAnimationCoef;
                 //clamp between lowest and hightest animation velocity 
                 _velocityX = Mathf.Clamp(_velocityX, -1, 1);
             }
@@ -145,7 +169,6 @@ public class CyborgAnimationController : MonoBehaviour
 
         if (_kccData.HasJumped)
         {
-            Debug.Log("Õàé");
             _animator.SetBool(_animIDJump, true);
         }
 
@@ -156,8 +179,6 @@ public class CyborgAnimationController : MonoBehaviour
 
         _animator.SetFloat(_animIDVelocityZ, _velocityZ);
         _animator.SetFloat(_animIDVelocityX, _velocityX);
-        //_animator.SetFloat("Velocity YZ", _velocityYZ);
-        //_animator.SetFloat("Velocity YX", _velocityYX);
 
 
     }

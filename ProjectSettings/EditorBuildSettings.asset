@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game.unity
     guid: b69d812ebe04e1648908c67abb8fa11a
+  - enabled: 1
+    path: Assets/levels/arena001_blocking/other/arena001_blocking.unity
+    guid: 7e0a09f83ee301a4da1f5d4f8897bbfd
   m_configObjects: {}

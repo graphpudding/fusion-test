@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 8066553274406139250}
   - component: {fileID: 1216559324647263838}
   - component: {fileID: 7614363783843609501}
+  - component: {fileID: 3173885023261441248}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -77,6 +78,7 @@ MonoBehaviour:
   - {fileID: 8590590556116103162}
   - {fileID: 8066553274406139250}
   - {fileID: 1216559324647263838}
+  - {fileID: 3173885023261441248}
   SimulationBehaviours:
   - {fileID: 8262386319244451753}
   - {fileID: 2808815881330756276}
@@ -361,6 +363,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdd0ba3d383a4dbeb1ab88a7477a4e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3173885023261441248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260199661339379077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  Animator: {fileID: 2713055884342531957}
+  SyncSettings: 79
+  FloatAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: -814817977
+  TimeAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: 1061325578
+  WeightAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: -814817977
+  StateHashes: 0000000088fcb5ccf042bdad1c6a54339e2518b671a7e1076b36dbedb1afdc305a6c54cd
+  TriggerHashes: 00000000
 --- !u!1 &504059032653147225
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,6 +1012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 2713055884342531957}
   _kcc: {fileID: 6645294808806868701}
+  _agent: {fileID: 2000174215685155523}
 --- !u!95 &2713055884342531957 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7545814782251356361, guid: 5df4b59668be53444936873d2428da60, type: 3}

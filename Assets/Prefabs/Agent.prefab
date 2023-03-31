@@ -933,6 +933,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7545814782251356361, guid: 5df4b59668be53444936873d2428da60, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 2f6708d2f78928242b40696a6fe23f03, type: 3}
+    - target: {fileID: 7545814782251356361, guid: 5df4b59668be53444936873d2428da60, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 778abeace058aed45bea27f9394b4100, type: 2}
     - target: {fileID: 7569545919675722994, guid: 5df4b59668be53444936873d2428da60, type: 3}
       propertyPath: m_Name
       value: CyborgSoldier

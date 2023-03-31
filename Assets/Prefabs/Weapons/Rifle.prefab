@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 770071280624979366}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: WeaponRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 2078273803469128416}
   - component: {fileID: 7173786207196164160}
   - component: {fileID: 3344315284673049127}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PrimaryAction
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -83,6 +83,7 @@ MonoBehaviour:
   _interpolationDataSource: 0
   _barrelTransform: {fileID: 7922358712448589423}
   _description: Hitscan projectile with flying dummy visual
+  _sharedComponents: []
 --- !u!114 &1721961406106779932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +210,7 @@ GameObject:
   - component: {fileID: 3890749299230721417}
   - component: {fileID: 6812520551915364871}
   - component: {fileID: 4717148603657562883}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SecondaryAction
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -246,6 +247,7 @@ MonoBehaviour:
   _interpolationDataSource: 0
   _barrelTransform: {fileID: 1158547543551928695}
   _description: Falling and bouncing kinematic projectile with spawned explosion
+  _sharedComponents: []
 --- !u!114 &8066641208153744762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,7 +369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7922358712448589423}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PrimaryBarrelTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +401,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1158547543551928695}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SecondaryBarrelTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +434,7 @@ GameObject:
   - component: {fileID: 8832676161420234000}
   - component: {fileID: 2616876571084317592}
   - component: {fileID: 2436901878621067112}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -512,19 +514,20 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 7922358712448589423}
     m_Modifications:
     - target: {fileID: 765306765243897395, guid: 610f2de150d6a80499f60bde1767586f, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3650194281211505319, guid: 610f2de150d6a80499f60bde1767586f, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4313697481264239836, guid: 610f2de150d6a80499f60bde1767586f, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5501774896621642075, guid: 610f2de150d6a80499f60bde1767586f, type: 3}
       propertyPath: m_RootOrder
@@ -572,15 +575,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5717811314102953757, guid: 610f2de150d6a80499f60bde1767586f, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5761260262153254565, guid: 610f2de150d6a80499f60bde1767586f, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6394469502569632907, guid: 610f2de150d6a80499f60bde1767586f, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6676483585354379157, guid: 610f2de150d6a80499f60bde1767586f, type: 3}
       propertyPath: m_Name
@@ -588,29 +591,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6676483585354379157, guid: 610f2de150d6a80499f60bde1767586f, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7382195316347546337, guid: 610f2de150d6a80499f60bde1767586f, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7883813613030762104, guid: 610f2de150d6a80499f60bde1767586f, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8189169061603738764, guid: 610f2de150d6a80499f60bde1767586f, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8447877832376063865, guid: 610f2de150d6a80499f60bde1767586f, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9124996811223633948, guid: 610f2de150d6a80499f60bde1767586f, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 610f2de150d6a80499f60bde1767586f, type: 3}
 --- !u!4 &6109151373377773521 stripped
 Transform:
@@ -622,6 +628,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 770071280624979366}
     m_Modifications:
     - target: {fileID: 100000, guid: c8985f030f8270f4597f659e3cba7c10, type: 3}
@@ -630,19 +637,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: c8985f030f8270f4597f659e3cba7c10, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: c8985f030f8270f4597f659e3cba7c10, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: c8985f030f8270f4597f659e3cba7c10, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: c8985f030f8270f4597f659e3cba7c10, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c8985f030f8270f4597f659e3cba7c10, type: 3}
       propertyPath: m_RootOrder
@@ -689,6 +696,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 400000, guid: c8985f030f8270f4597f659e3cba7c10, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7922358712448589423}
+    - targetCorrespondingSourceObject: {fileID: 400000, guid: c8985f030f8270f4597f659e3cba7c10, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1158547543551928695}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8985f030f8270f4597f659e3cba7c10, type: 3}
 --- !u!4 &8299899467625595023 stripped
 Transform:

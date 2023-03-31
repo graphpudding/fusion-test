@@ -302,7 +302,7 @@ namespace Projectiles
 			if (currentWeapon.gameObject.layer != layer)
 			{
 				// First person weapon is rendered differently (see ForwardRenderer asset)
-				currentWeapon.gameObject.SetLayer(layer, true);
+				//currentWeapon.gameObject.SetLayer(layer, true);
 			}
 
 			// Weapon is in different position for first person vs third person to align nicely in camera view

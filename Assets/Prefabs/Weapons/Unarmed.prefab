@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7874354909254097924}
   - component: {fileID: 4967035736118900224}
   - component: {fileID: 3006577215443151491}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Unarmed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,4 +71,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   _weaponSlot: 0
-  _fireTransform: {fileID: 0}
+  _displayName: 
+  _icon: {fileID: 0}

@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ragdollCollider: {fileID: 8284216834169619705}
-  _hitImpulse: 700
+  _hitImpulse: 300
 --- !u!114 &8066553274406139250
 MonoBehaviour:
   m_ObjectHideFlags: 0
